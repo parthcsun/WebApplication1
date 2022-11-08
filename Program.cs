@@ -20,6 +20,8 @@ builder.Services.AddSingleton<IMongoClient>(s =>
         new MongoClient(builder.Configuration.GetValue<string>("HotelStoreDatabaseSettings:ConnectionString")));
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

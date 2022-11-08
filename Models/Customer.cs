@@ -30,7 +30,7 @@ namespace hotel_management
 
         [BsonElement("paymentDetails")]
 
-        public PaymentDetails[] PaymentDetails { get; set; }
+        public PaymentDetails PaymentDetails { get; set; }
 
         [BsonElement("isActive")]
 
@@ -50,9 +50,6 @@ namespace hotel_management
     [BsonIgnoreExtraElements]
     public class PaymentDetails
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
 
         public string PaymentMethod { get; set; }
 
