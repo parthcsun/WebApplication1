@@ -2,9 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Controllers",
-    "\\Models",
-    "\\obj\\Debug",
-    "\\obj\\Debug\\net6.0"
+    "\\Services"
   ],
   "SelectedNode": "\\WebApplication1.sln",
   "PreviewInSolutionExplorer": false

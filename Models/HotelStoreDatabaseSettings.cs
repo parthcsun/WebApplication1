@@ -10,6 +10,7 @@ namespace hotel_management
     {
         public string EmployeeCollectionName { get; set; } = String.Empty;
         public string CustomerCollectionName { get; set; } = String.Empty;
+        public string RoomCollectionName { get; set; } = String.Empty;
         public string ConnectionString { get; set; } = String.Empty;
         public string DatabaseName { get; set; } = String.Empty;
         
