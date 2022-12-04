@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net;
-using System.Reflection;
 using System.Security.Cryptography;
-using System.Xml.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -71,6 +67,8 @@ namespace hotel_management
             return CreatedAtAction(nameof(Get), new { id = savedEmployee.Id }, savedEmployee);
         }
 
+       
+
         // PUT api/<EmployeesController>/5
         [HttpPut("{id,IsAdmin}")]
         public ActionResult Put(string id,bool IsAdmin, [FromBody] Employee employee)
@@ -112,28 +110,7 @@ namespace hotel_management
 
             return Ok($"Employee with Id = {id} deleted");
         }
-        
-         // Login api/<EmployeesController>
-        [HttpPost]
 
-        public ActionResult<Employee> Post(string EmployeeId, string Password)
-        {
-            if(EmployeeId==null || Password==null)
-            {
-                return NotFound("Please enter both EmployeeId and Password");
-            }
-            var employeee = employeeService.GetByEmployeeId(EmployeeId);
-
-            if (employeee == null)
-            {
-                return NotFound($"Employee with EmployeeId = {EmployeeId} not found");
-            }
-
-            if(Password!= employeee.Password)
-            {
-                return NotFound("Password is incorrect");
-            }          
-            return employeee;
-        }
+     
     }
 }
