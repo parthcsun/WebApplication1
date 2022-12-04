@@ -45,11 +45,14 @@ namespace hotel_management
                 Name = customer.Name,
                 Gender = customer.Gender,
                 Age = customer.Age,
+                AllowedRoom=customer.AllowedRoom,
                 IdentityProof = customer.IdentityProof,
                 Phone = customer.Phone,
                 PaymentDetails = customer.PaymentDetails,
                 IsActive = customer.IsActive
             };
+
+
 
             var savedCustomer = customerService.Create(tempUser);
             return CreatedAtAction(nameof(Get), new { id = savedCustomer.Id }, savedCustomer);

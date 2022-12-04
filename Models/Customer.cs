@@ -19,6 +19,9 @@ namespace hotel_management
         [BsonElement("age")]
         public int Age { get; set; }
 
+        [BsonElement("allowedRoom")]
+        public int AllowedRoom { get; set; }
+
         [BsonElement("identityProof")]
 
         public string IdentityProof { get; set; } = String.Empty;
@@ -36,15 +39,7 @@ namespace hotel_management
 
         public Boolean IsActive { get; set; }
 
-        internal class InsertOne
-        {
-            private Customer customer;
-
-            public InsertOne(Customer customer)
-            {
-                this.customer = customer;
-            }
-        }
+      
     }
 
     [BsonIgnoreExtraElements]

@@ -1,15 +1,20 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace hotel_management
 {
     public class EmployeeService : IEmployeeService
     {
         private readonly IMongoCollection<Employee> _employees;
+        private readonly string key;
 
         public EmployeeService(IHotelStoreDatabaseSettings settings, IMongoClient mongoClient)
         {
@@ -42,12 +47,11 @@ namespace hotel_management
         {
             _employees.ReplaceOne(employee => employee.Id == id, employee);
         }
-        
-        public Employee GetByeEmployeeId(string employeeId)
+
+        public Employee GetByEmployeeId(string employeeId)
         {
-           return _employees.Find(employee => employee.EmployeeId == employeeId).FirstOrDefault();
+            return _employees.Find(employee => employee.EmployeeId == employeeId).FirstOrDefault();
         }
 
-   
-    }
+    } 
 }

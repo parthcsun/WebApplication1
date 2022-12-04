@@ -20,7 +20,7 @@ namespace hotel_management
         public string RoomDescription { get; set; } = String.Empty;
 
         [BsonElement("roomNumber")]
-        public int[] RoomNumber { get; set; }
+        public RoomNumber[] RoomNumber { get; set; }
 
         [BsonElement("price")]
         public double Price { get; set; }
@@ -28,5 +28,15 @@ namespace hotel_management
         [BsonElement("isActive")]
         public Boolean IsActive { get; set; }
 
+    }
+
+    [BsonIgnoreExtraElements]
+    public class RoomNumber
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        public int Number { get; set; }
+        public Boolean IsAvailable { get; set; }
     }
 }

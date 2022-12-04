@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,11 @@ namespace hotel_management
         Employee Create(Employee employee);
         void Update(string id, Employee employee);
         void Remove(string id);
-        Employee GetByeEmployeeId(string employeeId);
-        
+        Employee GetByEmployeeId(string employeeId);
+
+       
+
+
+
     }
 }

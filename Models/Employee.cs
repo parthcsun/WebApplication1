@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using System.Text.Json.Serialization;
 
 namespace hotel_management
 {
@@ -11,7 +12,7 @@ namespace hotel_management
         public string? Id { get; set; }
 
         [BsonElement("name")]
-        public string Name { get; set; } = String.Empty;
+        public string Name { get; set; }
 
         [BsonElement("gender")]
         public string Gender { get; set; } = String.Empty;
@@ -23,10 +24,11 @@ namespace hotel_management
 
         public string EmployeeId { get; set; } = String.Empty;
 
-        [BsonElement("password")]
+        [BsonElement("password")] 
+        public string Password { get; set;}
 
-        public string Password { get; set; } 
-
+        
+        [BsonElement("salary")]
         public double Salary { get; set; }
 
         [BsonElement("phone")]
@@ -44,6 +46,12 @@ namespace hotel_management
         [BsonElement("isActive")]
 
         public Boolean IsActive { get; set; }
+
+        [BsonElement("isAdmin")]
+
+        public Boolean IsAdmin { get; set; }
+
+
 
     }
 }

@@ -74,3 +74,13 @@ C:\Users\ps995726\Source\Repos\parthcsun\WebApplication1\obj\Debug\net6.0\refint
 C:\Users\ps995726\Source\Repos\parthcsun\WebApplication1\obj\Debug\net6.0\WebApplication1.pdb
 C:\Users\ps995726\Source\Repos\parthcsun\WebApplication1\obj\Debug\net6.0\WebApplication1.genruntimeconfig.cache
 C:\Users\ps995726\Source\Repos\parthcsun\WebApplication1\obj\Debug\net6.0\ref\WebApplication1.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ps995726\source\repos\parthcsun\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll

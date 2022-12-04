@@ -1,9 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Net;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Xml.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace hotel_management
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
@@ -37,9 +44,14 @@ namespace hotel_management
         }
 
         // POST api/<EmployeesController>
-        [HttpPost]
-        public ActionResult<Employee> Post([FromBody] Employee employee)
+        [HttpPost("{IsAdmin}")]
+        public ActionResult<Employee> Post(bool IsAdmin, [FromBody] Employee employee)
         {
+            if (IsAdmin == false)
+            {
+                return NotFound("You are Not authorized to add employee");
+            }
+
             Employee tempUser = new Employee()
             {
                 Name = employee.Name,
@@ -51,7 +63,8 @@ namespace hotel_management
                 Phone=employee.Phone,
                 Email=employee.Email,
                 Address=employee.Address,
-                IsActive=employee.IsActive
+                IsActive=employee.IsActive,
+                IsAdmin=employee.IsAdmin
             };
 
             var savedEmployee = employeeService.Create(tempUser);
@@ -59,9 +72,14 @@ namespace hotel_management
         }
 
         // PUT api/<EmployeesController>/5
-        [HttpPut("{id}")]
-        public ActionResult Put(string id, [FromBody] Employee employee)
+        [HttpPut("{id,IsAdmin}")]
+        public ActionResult Put(string id,bool IsAdmin, [FromBody] Employee employee)
         {
+            if (IsAdmin == false)
+            {
+                return NotFound("You are Not authorized to update employee");
+            }
+
             var existingEmployee = employeeService.Get(id);
 
             if (existingEmployee == null)
@@ -75,9 +93,14 @@ namespace hotel_management
         }
 
         // DELETE api/<EmployeesController>/5
-        [HttpDelete("{id}")]
-        public ActionResult Delete(string id)
+        [HttpDelete("{id,IsAdmin}")]
+        public ActionResult Delete(string id, bool IsAdmin)
         {
+            if (IsAdmin == false)
+            {
+                return NotFound("You are Not authorized to delete employee");
+            }
+
             var employee = employeeService.Get(id);
 
             if (employee == null)
@@ -89,36 +112,28 @@ namespace hotel_management
 
             return Ok($"Employee with Id = {id} deleted");
         }
-
-        //login api/<EmployeesController>/5
-
-
-        [HttpGet("{employeeId}/{password}")]
-        public ActionResult<Employee> GetByEmployeeId(string employeeId, string password)
-        {
-            var employee = employeeService.GetByeEmployeeId(employeeId);
-            if (employee == null)
-            {
-                return NotFound($"Employee with Id = {employeeId} not found");
-            }
-            if (employee.Password == password)
-            {
-                return Ok($"Employee with Id = {employeeId} logged in");
-            }
-            if (employee.Password != password)
-            {
-                return Ok($"Hey!! {employeeId} you entered Invalid Password");
-            }
-            else
-            {
-                return NotFound($"Employee with Id = {employeeId} not found");
-            }
-        }
         
+         // Login api/<EmployeesController>
+        [HttpPost]
 
+        public ActionResult<Employee> Post(string EmployeeId, string Password)
+        {
+            if(EmployeeId==null || Password==null)
+            {
+                return NotFound("Please enter both EmployeeId and Password");
+            }
+            var employeee = employeeService.GetByEmployeeId(EmployeeId);
 
+            if (employeee == null)
+            {
+                return NotFound($"Employee with EmployeeId = {EmployeeId} not found");
+            }
 
-
-
+            if(Password!= employeee.Password)
+            {
+                return NotFound("Password is incorrect");
+            }          
+            return employeee;
+        }
     }
 }
