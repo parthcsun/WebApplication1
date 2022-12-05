@@ -20,7 +20,7 @@ namespace hotel_management
         public string RoomDescription { get; set; } = String.Empty;
 
         [BsonElement("roomNumber")]
-        public RoomNumber[] RoomNumber { get; set; }
+        public int RoomNumber { get; set; }
 
         [BsonElement("price")]
         public double Price { get; set; }

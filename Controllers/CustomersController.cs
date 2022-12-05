@@ -47,8 +47,9 @@ namespace hotel_management
                 Age = customer.Age,
                 AllowedRoom=customer.AllowedRoom,
                 IdentityProof = customer.IdentityProof,
+                AllowedRoom = customer.AllowedRoom,
                 Phone = customer.Phone,
-                PaymentDetails = customer.PaymentDetails,
+                PaymentDetails = customer.PaymentDetails,                
                 IsActive = customer.IsActive
             };
 
