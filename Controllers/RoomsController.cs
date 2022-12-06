@@ -46,7 +46,7 @@ namespace hotel_management
                 Name = room.Name,
                 Type = room.Type,
                 RoomDescription = room.RoomDescription,
-                RoomNumber = room.RoomNumber,
+              
                 Price = room.Price,
                 IsActive = room.IsActive
             };
@@ -57,13 +57,13 @@ namespace hotel_management
 
         // PUT api/<RoomsController>/5
         [HttpPut("{id}")]
-        public IActionResult Update(string id, Room roomIn)
+        public IActionResult Put(string id, [FromBody] Room roomIn)
         {
             var room = roomService.Get(id);
 
             if (room == null)
             {
-                return NotFound();
+                return NotFound($"Room with Id = {id} not found");
             }
 
             roomService.Update(id, roomIn);
@@ -80,7 +80,7 @@ namespace hotel_management
 
             if (room == null)
             {
-                return NotFound();
+                return NotFound($"Room with Id = {id} not found");
             }
 
             roomService.Remove(room.Id);
