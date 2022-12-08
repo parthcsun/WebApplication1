@@ -46,7 +46,8 @@ namespace hotel_management
                 Name = room.Name,
                 Type = room.Type,
                 RoomDescription = room.RoomDescription,
-              
+                RoomImage = room.RoomImage,
+                RoomNumber = room.RoomNumber,
                 Price = room.Price,
                 IsActive = room.IsActive
             };

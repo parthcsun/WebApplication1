@@ -19,6 +19,9 @@ namespace hotel_management
         [BsonElement("roomDescription")]
         public string RoomDescription { get; set; } = String.Empty;
 
+        [BsonElement("image")]
+        public string RoomImage { get; set; } = String.Empty;
+
         [BsonElement("roomNumber")]
         public int RoomNumber { get; set; }
 
