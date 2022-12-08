@@ -1,4 +1,5 @@
 using hotel_management;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System.Text;
@@ -26,6 +27,12 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IRoomService, RoomService>();
 
+builder.Services.AddControllers(options =>
+{
+    options.RespectBrowserAcceptHeader = true;
+    options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,7 +43,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 
 
 app.MapControllers();

@@ -56,8 +56,8 @@ namespace hotel_management
         }
 
         // PUT api/<RoomsController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Room roomIn)
+        [HttpPut]
+        public ActionResult<Room> Put(string id,Room roomIn)
         {
             var room = roomService.Get(id);
 
@@ -67,8 +67,9 @@ namespace hotel_management
             }
 
             roomService.Update(id, roomIn);
+            var roomm = roomService.Get(id);
 
-            return NoContent();
+            return roomm;
         }
 
         // DELETE api/<RoomsController>/5

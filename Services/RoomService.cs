@@ -38,10 +38,14 @@ namespace hotel_management
 			_rooms.DeleteOne(room => room.Id == id);
 		}
 
-		public void Update(string id, Room room)
+		public Room Update(string id, Room room)
 		{
-			_rooms.ReplaceOne(room => room.Id == id, room);
-		}
+			 _rooms.ReplaceOne(room => room.Id == id, room);
+
+            return _rooms.Find(room => room.Id == id).FirstOrDefault();
+
+
+        }
 
      }
 }

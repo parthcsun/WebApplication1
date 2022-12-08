@@ -12,7 +12,7 @@ namespace hotel_management
         List<Employee> Get();
         Employee Get(string id);
         Employee Create(Employee employee);
-        void Update(string id, Employee employee);
+        Employee Update(string id, Employee employee);
         void Remove(string id);
         Employee GetByEmployeeId(string employeeId);
 

@@ -11,7 +11,7 @@ namespace hotel_management
         List<Customer> Get();
         Customer Get(string id);
         Customer Create(Customer customer);
-        void Update(string id, Customer customer);
+        Customer Update(string id, Customer customer);
         void Remove(string id);
         
     }

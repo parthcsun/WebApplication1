@@ -1,10 +1,12 @@
-﻿FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+﻿FROM ubuntu:latest
 WORKDIR /app
 COPY ./ ./
 
-RUN dotnet publish -c Release -o out
+RUN apt-get update 
+RUN apt-get install -y dotnet-sdk-6.0
+RUN dotnet dev-certs https --clean
+RUN dotnet dev-certs https --trust
+RUN dotnet add package MongoDB.Driver
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim
-WORKDIR /app
-COPY --from=build /app/out .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet NetCore3WebAPI.dll
+RUN dotnet run
+

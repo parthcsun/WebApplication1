@@ -61,7 +61,7 @@ namespace hotel_management
         // PUT api/<CustomersController>/5
         [HttpPut("{id}")]
 
-        public IActionResult Put(string id, [FromBody] Customer customer)
+        public ActionResult<Customer> Put(string id, [FromBody] Customer customer)
         {
             var customerFromDb = customerService.Get(id);
 
@@ -72,8 +72,10 @@ namespace hotel_management
 
             customerService.Update(id, customer);
 
-            return NoContent();   
-          
+            var customerr = customerService.Get(id);
+
+            return customerr;
+
         }
 
         // DELETE api/<CustomersController>/5

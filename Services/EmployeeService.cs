@@ -43,9 +43,10 @@ namespace hotel_management
             _employees.DeleteOne(employee => employee.Id == id);
         }
 
-        public void Update(string id, Employee employee)
+        public Employee Update(string id, Employee employee)
         {
             _employees.ReplaceOne(employee => employee.Id == id, employee);
+            return _employees.Find(employee => employee.Id == id).FirstOrDefault();
         }
 
         public Employee GetByEmployeeId(string employeeId)

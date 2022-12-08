@@ -71,7 +71,7 @@ namespace hotel_management
 
         // PUT api/<EmployeesController>/5
         [HttpPut("{id,IsAdmin}")]
-        public ActionResult Put(string id,bool IsAdmin, [FromBody] Employee employee)
+        public ActionResult<Employee> Put(string id,bool IsAdmin, [FromBody] Employee employee)
         {
             if (IsAdmin == false)
             {
@@ -87,7 +87,9 @@ namespace hotel_management
 
             employeeService.Update(id, employee);
 
-            return NoContent();
+            var employeeee = employeeService.Get(id);
+
+            return employeeee;
         }
 
         // DELETE api/<EmployeesController>/5

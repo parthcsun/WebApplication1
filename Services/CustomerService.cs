@@ -38,9 +38,11 @@ namespace hotel_management
             _customers.DeleteOne(customer => customer.Id == id);
         }
 
-        public void Update(string id, Customer customer)
+        public Customer Update(string id, Customer customer)
         {
             _customers.ReplaceOne(customer => customer.Id == id, customer);
+
+            return _customers.Find(customer => customer.Id == id).FirstOrDefault();
         }
         
         

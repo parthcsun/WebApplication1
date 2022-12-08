@@ -11,7 +11,7 @@ namespace hotel_management
         List<Room> Get();
         Room Get(string id);
         Room Create(Room room);
-        void Update(string id, Room room);
+        Room Update(string id, Room room);
         void Remove(string id);
 
     }
