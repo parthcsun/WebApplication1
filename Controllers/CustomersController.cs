@@ -93,7 +93,7 @@ namespace hotel_management
 
             customerService.Remove(customerFromDb.Id);
 
-            return NoContent();
+            return Ok($"Customer is deleted successfully");
         }
 
 

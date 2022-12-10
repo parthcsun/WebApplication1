@@ -86,7 +86,7 @@ namespace hotel_management
 
             roomService.Remove(room.Id);
 
-            return NoContent();
+            return Ok($"Room is deleted");
         }
         
         
